@@ -32,6 +32,8 @@ clear
     1 | 01)
         echo "Listando usuários do Samba..."
          samba-tool user list
+         read -p "Pressione [Enter] para continuar..."
+
         ;;
 
     99) 
