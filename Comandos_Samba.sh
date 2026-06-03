@@ -145,18 +145,18 @@ EOF
             echo "--- Configurar Script de Logon para Usuário ---"
             echo -n "Digite o nome do usuário: "
             read USER_LOGON
-            echo -n "Digite o nome do script de logon (Ex: config-proxy.bat): "
-            read SCRIPT_LOGON
+            # echo -n "Digite o nome do script de logon (Ex: config-proxy.bat): "
+            # read SCRIPT_LOGON
             
             cat <<EOF > /tmp/logon_script.ldif
 dn: $(samba-tool user show $USER_LOGON | grep dn: | cut -d" " -f2-)
 changetype: modify
 replace: logonScript
-logonScript: $SCRIPT_LOGON
+logonScript: config-proxy.bat
 EOF
             ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script.ldif
             rm /tmp/logon_script.ldif
-            echo "Script de logon '$SCRIPT_LOGON' configurado para o usuário '$USER_LOGON'."
+            echo "Script de logon 'config-proxy.bat' configurado para o usuário '$USER_LOGON'."
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
