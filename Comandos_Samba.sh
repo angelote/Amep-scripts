@@ -22,7 +22,7 @@ clear
     echo "#                                          #"
     echo "############################################"
 
-    read OPC
+    read "Selecione a opção: " OPC
     case $OPC in
 
     99) 
@@ -37,6 +37,6 @@ do
    MENU
 done
 
-sleep  
+  
 
 
