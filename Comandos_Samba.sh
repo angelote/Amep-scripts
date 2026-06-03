@@ -22,9 +22,13 @@ clear
     echo "#                                          #"
     echo "############################################"
 
-   read OPC
+    read OPC
 
-
+    99) 
+        break 
+        ;;
+   esac
+}
 pause 
 
 
