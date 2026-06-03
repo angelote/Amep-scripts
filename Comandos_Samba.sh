@@ -42,6 +42,22 @@ MENU() {
             return 0
             ;;
 
+        3 | 03)
+            echo "Função de alterar senha ainda não implementada."
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;  
+        10)
+            echo "Listando grupos do Samba..."
+            samba-tool group list
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;      
+        11)
+            echo "Função de adicionar grupo ainda não implementada."        
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;
         99)
             # Sinaliza para o while parar
             return 1
