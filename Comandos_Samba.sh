@@ -173,10 +173,12 @@ replace: logonscript
 scriptPath: config-proxy.bat
 EOF
                 ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script_all.ldif
-                rm /tmp/logon_script_all.ldif
+                
             done
+            cat /tmp/logon_script_all.ldif
             echo "Script de logon 'config-proxy.bat ' configurado para todos os usuários."
             read -p "Pressione [Enter] para continuar..."
+            rm /tmp/logon_script_all.ldif
             return 0
             ;;
 60)
