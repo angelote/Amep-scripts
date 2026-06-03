@@ -31,7 +31,7 @@ clear
     case $OPC in
     1 | 01)
         echo "Listando usuários do Samba..."
-        sudo samba-tool user list
+         samba-tool user list
         ;;
 
     99) 
