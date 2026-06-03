@@ -162,6 +162,13 @@ EOF
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
+60)
+            echo "--- Sincronizar Permissões de ACL ---"
+            samba-tool ntacl sysvolreset
+            echo "Permissões de ACL sincronizadas para a pasta SYSVOL."
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;
         99)
             return 1
             ;;
