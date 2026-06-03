@@ -33,11 +33,9 @@ clear
         echo "Listando usuários do Samba..."
         sudo samba-tool user list
         ;;
-        
+
     99) 
         break 
-        exit 0
-
         ;;
    esac
 }
