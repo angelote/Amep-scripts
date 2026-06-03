@@ -22,7 +22,8 @@ clear
     echo "#                                          #"
     echo "############################################"
 
-    read "Selecione a opção: " OPC
+    echo -n "Digite a opção desejada: "
+    read OPC
     case $OPC in
 
     99) 
