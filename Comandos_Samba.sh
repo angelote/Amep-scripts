@@ -141,7 +141,25 @@ EOF
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
-
+51)
+            echo "--- Configurar Script de Logon para Todos os Usuários ---"
+            echo -n "Digite o nome do script de logon (Ex: config-proxy.bat): "
+            read SCRIPT_LOGON_ALL
+            
+            for USER in $(samba-tool user list); do
+                cat <<EOF > /tmp/logon_script_all.ldif
+dn: $(samba-tool user show $USER | grep dn: | cut -d" " -f2-)
+changetype: modify
+replace: logonScript
+logonScript: $SCRIPT_LOGON_ALL
+EOF
+                ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script_all.ldif
+                rm /tmp/logon_script_all.ldif
+            done
+            echo "Script de logon '$SCRIPT_LOGON_ALL' configurado para todos os usuários."
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;
         99)
             return 1
             ;;
