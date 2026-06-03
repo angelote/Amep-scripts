@@ -163,8 +163,8 @@ EOF
             return 0
             ;;
 60)
-            echo "--- Sincronizar Permissões de ACL ---"
-            samba-tool ntacl sysvolreset
+            echo "--- Força o Samba a sincronizar as permissões de ACL do Sysvol ---"
+            samba-tool gpo aclcheck
             echo "Permissões de ACL sincronizadas para a pasta SYSVOL."
             read -p "Pressione [Enter] para continuar..."
             return 0
