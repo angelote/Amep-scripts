@@ -4,6 +4,10 @@
 # Criado em: Wed 03/Jun/2026 hs 17:43
 # Ultima modificação: Wed 03/Jun/2026 hs 18:00
 # Propósito do script: Gerenciamento de Usuários e Grupos no Samba4
+# requisitos:
+# sudo apt update
+# sudo apt install ldb-tools
+
 
 MENU() {
     clear
