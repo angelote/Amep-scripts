@@ -62,7 +62,7 @@ MENU() {
 dn: $(samba-tool user show $NOVO_USER | grep dn: | cut -d" " -f2-)
 changetype: modify
 replace: logonscript
-logonScript: config-proxy.bat
+logonscript: config-proxy.bat
 EOF
             ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/mod_script.ldif
             rm /tmp/mod_script.ldif
