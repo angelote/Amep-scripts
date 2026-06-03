@@ -5,3 +5,4 @@
 # ultima modificação:Wed 03/Jun/2026 hs 17:43
 # Propósito do script:
 
+pause 
