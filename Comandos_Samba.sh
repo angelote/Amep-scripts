@@ -14,6 +14,7 @@ MENU() {
     echo "# 01 - Listar Usuários                                   #"
     echo "# 02 - Adicionar Usuário                                 #"
     echo "# 03 - Alterar senha                                     #"
+    echo "# 04 - Mostrar configurações do usuário                  #"
     echo "#                                                        #"
     echo "# 10 - Listar grupos                                     #"
     echo "# 11 - Adicionar grupo                                   #"
@@ -79,7 +80,19 @@ EOF
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;  
-
+        4 | 04)
+            echo "--- Mostrar Configurações do Usuário ---"
+            echo -n "Digite o nome do usuário (username): "
+            read USER_SHOW
+            echo "----------------------------------------"
+            
+            # Executa o comando exibindo os detalhes do usuário
+            samba-tool user show "$USER_SHOW"
+            
+            echo "----------------------------------------"
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;
         10)
             echo "--- Listando grupos do Samba ---"
             samba-tool group list
