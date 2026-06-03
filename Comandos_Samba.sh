@@ -24,6 +24,8 @@ MENU() {
     echo "# 50 - Configurar script de logon para um usuário        #"
     echo "# 51 - Configurar script de logon para todos             #"
     echo "#                                                        #"
+    echo "# 60 - sincronizar as permissões de ACL                  #"
+    echo "#                                                        #"
     echo "# 99 - Sair                                              #"
     echo "#                                                        #"
     echo "##########################################################"
