@@ -164,7 +164,7 @@ EOF
             ;;
 60)
             echo "--- Força o Samba a sincronizar as permissões de ACL do Sysvol ---"
-            samba-tool gpo aclcheck
+            samba-tool gpo aclcheck -U Administrator
             echo "Permissões de ACL sincronizadas para a pasta SYSVOL."
             read -p "Pressione [Enter] para continuar..."
             return 0
