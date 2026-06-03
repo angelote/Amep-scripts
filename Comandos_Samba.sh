@@ -30,6 +30,13 @@ clear
         ;;
    esac
 }
-pause 
+
+
+while true
+do
+   MENU
+done
+
+sleep  
 
 
