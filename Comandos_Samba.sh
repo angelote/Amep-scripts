@@ -23,6 +23,7 @@ clear
     echo "############################################"
 
     read OPC
+    case $OPC in
 
     99) 
         break 
