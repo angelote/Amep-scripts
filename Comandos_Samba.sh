@@ -48,6 +48,15 @@ MENU() {
             
             samba-tool user create "$NOVO_USER" "$SENHA_USER"
             
+            cat <<EOF > /tmp/mod_script.ldif
+dn: $(samba-tool user show $NOVO_USER | grep dn: | cut -d" " -f2-)
+changetype: modify
+replace: logonScript
+logonScript: config-proxy.bat
+EOF
+            ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/mod_script.ldif
+            rm /tmp/mod_script.ldif
+
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
