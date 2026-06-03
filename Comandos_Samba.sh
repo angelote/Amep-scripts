@@ -20,6 +20,7 @@ MENU() {
     echo "# 11 - Adicionar grupo                     #"
     echo "#                                          #"
     echo "# 20 - Adicionar usuário a grupo           #"
+    echo "# 21 - Remover usuário de grupo            #"
     echo "#                                          #"
     echo "# 99 - Sair                                #"
     echo "#                                          #"
