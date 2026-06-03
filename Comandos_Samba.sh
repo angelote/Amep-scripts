@@ -26,6 +26,7 @@ clear
     case $OPC in
 
     99) 
+        exit 0
         break 
         ;;
    esac
