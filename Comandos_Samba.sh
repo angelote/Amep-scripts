@@ -156,7 +156,7 @@ logonScript: config-proxy.bat
 EOF
             ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script.ldif
             rm /tmp/logon_script.ldif
-            echo "Script de logon 'config-proxy.bat' configurado para o usuário '$USER_LOGON'."
+            echo "Script de logon 'config-proxy.bat ' configurado para o usuário '$USER_LOGON'."
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
@@ -170,12 +170,12 @@ EOF
 dn: $(samba-tool user show $USER | grep dn: | cut -d" " -f2-)
 changetype: modify
 replace: logonScript
-logonScript: $SCRIPT_LOGON_ALL
+logonScript: config-proxy.bat
 EOF
                 ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script_all.ldif
                 rm /tmp/logon_script_all.ldif
             done
-            echo "Script de logon '$SCRIPT_LOGON_ALL' configurado para todos os usuários."
+            echo "Script de logon 'config-proxy.bat ' configurado para todos os usuários."
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
