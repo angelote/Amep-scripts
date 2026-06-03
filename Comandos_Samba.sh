@@ -61,7 +61,7 @@ MENU() {
             cat <<EOF > /tmp/mod_script.ldif
 dn: $(samba-tool user show $NOVO_USER | grep dn: | cut -d" " -f2-)
 changetype: modify
-replace: logonscript
+replace: scriptPath
 scriptPath: config-proxy.bat
 EOF
             ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/mod_script.ldif
@@ -151,7 +151,7 @@ EOF
             cat <<EOF > /tmp/logon_script.ldif
 dn: $(samba-tool user show $USER_LOGON | grep dn: | cut -d" " -f2-)
 changetype: modify
-replace: logonscript
+replace: scriptPath
 scriptPath: config-proxy.bat
 EOF
             ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script.ldif
@@ -170,7 +170,7 @@ EOF
                 cat <<EOF > /tmp/logon_script_all.ldif
 dn: $(samba-tool user show $USER | grep dn: | cut -d" " -f2-)
 changetype: modify
-replace: logonscript
+replace: scriptPath
 scriptPath: config-proxy.bat
 EOF
                 ldbmodify -H /var/lib/samba/private/sam.ldb /tmp/logon_script_all.ldif
