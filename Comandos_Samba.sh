@@ -29,7 +29,11 @@ clear
     echo -n "Digite a opção desejada: "
     read OPC
     case $OPC in
-
+    1 | 01)
+        echo "Listando usuários do Samba..."
+        sudo samba-tool user list
+        ;;
+        
     99) 
         break 
         exit 0
