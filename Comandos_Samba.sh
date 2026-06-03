@@ -19,7 +19,7 @@ MENU() {
     echo "# 10 - Listar grupos                       #"
     echo "# 11 - Adicionar grupo                     #"
     echo "#                                          #"
-    echo "#                                          #"
+    echo "# 20 - Adicionar usuário a grupo           #"
     echo "#                                          #"
     echo "# 99 - Sair                                #"
     echo "#                                          #"
@@ -38,6 +38,7 @@ MENU() {
 
         2 | 02)
             echo "Função de adicionar usuário ainda não implementada."
+            
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
