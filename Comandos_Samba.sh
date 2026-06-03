@@ -21,7 +21,7 @@ MENU() {
     echo "# 20 - Adicionar usuário a grupo                         #"
     echo "# 21 - Remover usuário de grupo                          #"
     echo "#                                                        #"
-    echo "# 50 - Configurar script de logon para usuário           #"
+    echo "# 50 - Configurar script de logon para um usuário        #"
     echo "# 51 - Configurar script de logon para todos             #"
     echo "#                                                        #"
     echo "# 99 - Sair                                              #"
