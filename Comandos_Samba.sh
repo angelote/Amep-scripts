@@ -45,7 +45,7 @@ clear
 
 while true
 do
-   MENU
+    MENU || break
 done
 
   
