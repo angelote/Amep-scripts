@@ -1,15 +1,14 @@
 #!/bin/bash
 # 
 # Autor: Anderson Angelote
-# Criado em:Wed 03/Jun/2026 hs 17:43
-# ultima modificação:Wed 03/Jun/2026 hs 17:43
-# Propósito do script:
-#!/bin/bash
+# Criado em: Wed 03/Jun/2026 hs 17:43
+# Ultima modificação: Wed 03/Jun/2026 hs 18:00
+# Propósito do script: Gerenciamento de Usuários e Grupos no Samba4
 
 MENU() {
     clear
     echo "############################################"
-    echo "#           MENU CONEXÃO                   #"
+    echo "#           MENU SAMBA 4                   #"
     echo "############################################"
     echo "#                                          #"
     echo "# 01 - Listar Usuários                     #"
@@ -31,47 +30,88 @@ MENU() {
 
     case "$OPC" in
         1 | 01)
-            echo "Listando usuários do Samba..."
+            echo "--- Listando usuários do Samba ---"
             samba-tool user list
+            echo "----------------------------------"
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
 
         2 | 02)
-            echo "Função de adicionar usuário ainda não implementada."
+            echo "--- Adicionar Novo Usuário ---"
+            echo -n "Digite o nome do novo usuário (username): "
+            read NOVO_USER
+            # O Samba4 exige senhas complexas por padrão
+            echo -n "Digite a senha para o usuário (Ex: Senha@123): "
+            read -s SENHA_USER
+            echo "" # Apenas pula a linha por conta do read -s
+            
+            samba-tool user create "$NOVO_USER" "$SENHA_USER"
             
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
 
         3 | 03)
-            echo "Função de alterar senha ainda não implementada."
+            echo "--- Alterar Senha de Usuário ---"
+            echo -n "Digite o nome do usuário: "
+            read USER_ALTERAR
+            echo -n "Digite a nova senha: "
+            read -s NOVA_SENHA
+            echo ""
+            
+            samba-tool user setpassword "$USER_ALTERAR" --newpassword="$NOVA_SENHA"
+            
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;  
+
         10)
-            echo "Listando grupos do Samba..."
+            echo "--- Listando grupos do Samba ---"
             samba-tool group list
+            echo "--------------------------------"
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;      
+
         11)
-            echo "Função de adicionar grupo ainda não implementada."        
+            echo "--- Adicionar Novo Grupo ---"
+            echo -n "Digite o nome do novo grupo: "
+            read NOVO_GRUPO
+            
+            samba-tool group add "$NOVO_GRUPO"
+            
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
+
         20)
-            echo "Função de adicionar usuário a grupo ainda não implementada."
+            echo "--- Adicionar Usuário a um Grupo ---"
+            echo -n "Digite o nome do grupo: "
+            read GRUPO_ADD
+            echo -n "Digite o nome do usuário que deseja adicionar: "
+            read USER_ADD
+            
+            samba-tool group addmembers "$GRUPO_ADD" "$USER_ADD"
+            
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
+
         21)
-            echo "Função de remover usuário de grupo ainda não implementada."
+            echo "--- Remover Usuário de um Grupo ---"
+            echo -n "Digite o nome do grupo: "
+            read GRUPO_REM
+            echo -n "Digite o nome do usuário que deseja remover: "
+            read USER_REM
+            
+            samba-tool group removemembers "$GRUPO_REM" "$USER_REM"
+            
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
+
         99)
-            # Sinaliza para o while parar
             return 1
             ;;
 
@@ -82,6 +122,12 @@ MENU() {
             ;;
     esac
 }
+
+# Validação: O script precisa rodar como root para o samba-tool funcionar corretamente
+if [ "$EUID" -ne 0 ]; then
+  echo "Por favor, execute este script como root (sudo)."
+  exit 1
+fi
 
 while true; do
     MENU || break
