@@ -60,6 +60,16 @@ MENU() {
             read -p "Pressione [Enter] para continuar..."
             return 0
             ;;
+        20)
+            echo "Função de adicionar usuário a grupo ainda não implementada."
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;
+        21)
+            echo "Função de remover usuário de grupo ainda não implementada."
+            read -p "Pressione [Enter] para continuar..."
+            return 0
+            ;;
         99)
             # Sinaliza para o while parar
             return 1
