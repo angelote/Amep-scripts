@@ -14,6 +14,7 @@ MENU() {
     echo "#                                          #"
     echo "# 01 - Listar Usuários                     #"
     echo "# 02 - Adicionar Usuário                   #"
+    echo "# 03 - Alterar senha                       #"
     echo "#                                          #"
     echo "# 10 - Listar grupos                       #"
     echo "# 11 - Adicionar grupo                     #"
